@@ -31,6 +31,9 @@
 
     <a data-to-offer>to offer</a>
     <a data-to-conv>conversion</a>
+    <a href="https://kazaba889.github.io/test/">to quiz</a>
+
+    <button data-e1-btn onclick="trackE1()">track event 1</button>
 
     <script>
       function getCookie(name) {
@@ -56,6 +59,15 @@
       
       setTimeout(() => updateToOfferUrl(), 1000);
       updateConversionUrl();
+
+      function trackE1() {
+        BPixelJS.update({
+          updateKey: '44b9940bb47fa6c44430a3789a33c4d9',
+          tokens: {
+            add_event1: '1',
+          }
+        })
+      }
     </script>
   </body>
 </html>
