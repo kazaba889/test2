@@ -38,7 +38,7 @@
     <br><br>
     <a data-to-quiz>to quiz</a>
     <br><br>
-    <button type="button" data-e1-btn onclick="trackE1()">track event 1</button>
+    <button type="button" data-e1-btn onclick="trackE3()">track event 3</button>
 
     <script>
       function getCookie(name) {
@@ -73,14 +73,27 @@
       });
       updateToOfferUrl();
       
-    function trackE1() {
+    function trackE3() {
         BPixelJS.update({
           updateKey: '44b9940bb47fa6c44430a3789a33c4d9',
           tokens: {
-            add_event1: '1',
+            add_event3: '1',
           }
         })
       }
+    </script>
+    <script>
+      function runtimeTracker() {
+          setInterval(()=>{
+              BPixelJS.update({
+                  updateKey: '44b9940bb47fa6c44430a3789a33c4d9',
+                  tokens: {
+                      add_event1: 10,
+                  }
+              })
+          }, 10000)
+      }
+      runtimeTracker();
     </script>
   </body>
 </html>
