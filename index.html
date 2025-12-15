@@ -24,17 +24,15 @@
     campaignKey: '08323d17216cfdf3d7b1',
   });
   BPixelJS.run();
-  console.log(window.tokens);
-  BPixelJS.useTokens((t) => {console.log(t, '3')})
+  
 </script>
   </head>
   <body>
-    <script>console.log(window.tokens, '2');</script>
     test page 2
 
     <a data-to-offer>to offer</a>
     <a data-to-conv>conversion</a>
-    <a href="https://kazaba889.github.io/test/">to quiz</a>
+    <a data-to-quiz>to quiz</a>
 
     <button type="button" data-e1-btn onclick="trackE1()">track event 1</button>
 
@@ -54,16 +52,23 @@
 
       function updateConversionUrl() {
         let aEl = document.querySelector('[data-to-conv]');
-        let params = new URLSearchParams(window.location.search);
-        let clickid = params.get('clickid');
-        let href = `https://pandatrck.com/click.php?cnv_id=${clickid}&payout=50`;
+        let href = `https://pandatrck.com/click.php?cnv_id=${window.tokens.clickid}&payout=50`;
         aEl.setAttribute('href', href);
       }
-      
-      setTimeout(() => updateToOfferUrl(), 1000);
-      updateConversionUrl();
 
-      function trackE1() {
+      function updateQuizUrl() {
+        let aEl = document.querySelector('[data-to-conv]');
+        let href = `https://kazaba889.github.io/test/?bcid=${window.tokens.bcid}`;
+        aEl.setAttribute('href', href);
+      }
+
+      BPixelJS.useTokens((t) => {
+          updateConversionUrl();
+          updateQuizUrl();
+      });
+      updateConversionUrl();
+      
+    function trackE1() {
         BPixelJS.update({
           updateKey: '44b9940bb47fa6c44430a3789a33c4d9',
           tokens: {
