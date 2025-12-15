@@ -30,13 +30,13 @@
   <body>
     landing page
     <br>
-
+    click id: <span data-click-id></span>
     <a data-to-offer>to offer</a>
-    <br>
+    <br><br>
     <a data-to-conv>conversion</a>
-    <br>
+    <br><br>
     <a data-to-quiz>to quiz</a>
-    <br>
+    <br><br>
     <button type="button" data-e1-btn onclick="trackE1()">track event 1</button>
 
     <script>
@@ -68,6 +68,7 @@
       BPixelJS.useTokens((t) => {
           updateConversionUrl();
           updateQuizUrl();
+          document.querySelector('[data-click-id]').innerHTML = t.bcid;
       });
       updateToOfferUrl();
       
