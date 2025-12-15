@@ -23,18 +23,18 @@
     <button type="button" data-e1-btn onclick="trackE3()">track Event3</button>
 
     <script>
-      function getCookie(name) {
-        let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        return match ? match[2] : null;
-      }
+      // function getCookie(name) {
+      //   let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      //   return match ? match[2] : null;
+      // }
 
-      function updateToOfferUrl() {
-        let fbp = getCookie('_fbp');
-        let fbc = getCookie('_fbc');
-        let aEl = document.querySelector('[data-to-offer]');
-        let href = `https://pandatrck.com/click.php?lp=1&fbc=${fbc}&fbp=${fbp}`;
-        aEl.setAttribute('href', href);
-      }
+      // function updateToOfferUrl() {
+      //   let fbp = getCookie('_fbp');
+      //   let fbc = getCookie('_fbc');
+      //   let aEl = document.querySelector('[data-to-offer]');
+      //   let href = `https://pandatrck.com/click.php?lp=1&fbc=${fbc}&fbp=${fbp}`;
+      //   aEl.setAttribute('href', href);
+      // }
 
       function updateConversionUrl() {
         let aEl = document.querySelector('[data-to-conv]');
@@ -53,7 +53,7 @@
           updateQuizUrl();
           document.querySelector('[data-click-id]').innerHTML = t.bcid;
       });
-      updateToOfferUrl();
+      // updateToOfferUrl();
       
     function trackE3() {
         BPixelJS.update({
