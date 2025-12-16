@@ -18,7 +18,7 @@
     <br><br>
     <a data-to-conv>conversion</a>
     <br><br>
-    <a data-to-quiz>to quiz</a>
+    <a data-to-quiz href="https://kazaba889.github.io/test/?bcid=[bcid]">to quiz</a>
     <br><br>
     <button type="button" data-e1-btn onclick="trackE3()">track Event3</button>
 
@@ -42,15 +42,15 @@
         aEl.setAttribute('href', href);
       }
 
-      function updateQuizUrl() {
-        let aEl = document.querySelector('[data-to-quiz]');
-        let href = `https://kazaba889.github.io/test/?bcid=${window.tokens.bcid}`;
-        aEl.setAttribute('href', href);
-      }
+      // function updateQuizUrl() {
+      //   let aEl = document.querySelector('[data-to-quiz]');
+      //   let href = `https://kazaba889.github.io/test/?bcid=${window.tokens.bcid}`;
+      //   aEl.setAttribute('href', href);
+      // }
 
       BPixelJS.useTokens((t) => {
           updateConversionUrl();
-          updateQuizUrl();
+          // updateQuizUrl();
           document.querySelector('[data-click-id]').innerHTML = t.bcid;
       });
       // updateToOfferUrl();
@@ -76,6 +76,17 @@
           }, 10000)
       }
       runtimeTracker();
+    </script>
+    <script>
+      function updateBcidUrls(clickId) {
+          let links = document.querySelectorAll('a[href*="bcid=[bcid]"]');
+          links.forEach(link => {
+              link.href = link.href.replace('[bcid]', clickId);
+          });
+      }
+      BPixelJS.useTokens((t) => {
+          updateBcidUrls(t.bcid);
+      });
     </script>
   </body>
 </html>
