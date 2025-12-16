@@ -78,14 +78,11 @@
       runtimeTracker();
     </script>
     <script>
-      function updateBcidUrls(clickId) {
+      BPixelJS.useTokens((t) => {
           let links = document.querySelectorAll('a[href*="bcid=[bcid]"]');
           links.forEach(link => {
-              link.href = link.href.replace('[bcid]', clickId);
+              link.href = link.href.replace('[bcid]', t.bcid);
           });
-      }
-      BPixelJS.useTokens((t) => {
-          updateBcidUrls(t.bcid);
       });
     </script>
   </body>
