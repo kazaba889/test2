@@ -79,10 +79,10 @@
     </script>
     <script>
       BPixelJS.useTokens((t) => {
-          let links = document.querySelectorAll('a[href*="bcid=[bcid]"]');
-          links.forEach(link => {
-              link.href = link.href.replace('[bcid]', t.bcid);
-          });
+              let links = document.querySelectorAll('a[href*="bcid=[bcid]"], a[href*="bcid=%5Bbcid%5D"]');
+              links.forEach(link => {
+                  link.href = link.href.replace('[bcid]', t.bcid).replace('%5Bbcid%5D', t.bcid);
+              });
       });
     </script>
   </body>
